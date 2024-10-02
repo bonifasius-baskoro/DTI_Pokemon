@@ -11,6 +11,10 @@ const usePokemonList = () => {
   const [error, setError] = useState<unknown>(null);
 
   useEffect(() => {
+    const pokemonListStorage = window.localStorage.getItem("pokemonList")
+    if (!pokemonListStorage ){
+      setPokemonList(JSON.parse(pokemonListStorage) as Pokemon[])
+    }
     const fetchPokemonList = async () => {
       try {
         const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20');
@@ -19,6 +23,7 @@ const usePokemonList = () => {
         }
         const data = await response.json();
         console.log(data);
+        window.localStorage.setItem("pokemonList",JSON.stringify(data.results))
         setPokemonList(data.results);
         setLoading(false);
       } catch (error) {
