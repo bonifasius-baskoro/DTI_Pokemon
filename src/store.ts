@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import gridReducer from "./features/grid";
 import { pokemonListReducer } from "./features/pokemonlist";
+import { pokemonDetailListReducer } from "./features/pokemonDetail";
 
 
 export const store= configureStore({
     reducer:{
         grid: gridReducer,
-        pokemonList:pokemonListReducer
+        pokemonList:pokemonListReducer,
+        pokemonDetailList:pokemonDetailListReducer
     }
 });
 
