@@ -1,18 +1,16 @@
 import { FC, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../hooks/useSelector";
+import { toogleGrid } from "../features/grid";
 
-type ViewOption = "single" | "double";
 
-interface ToggleViewProps {
-  onViewChange: (view: ViewOption) => void;
-}
 
-const GridOption: FC<ToggleViewProps> = () => {
-  const [activeView, setActiveView] = useState<ViewOption>("single");
+const GridOption: FC = () => {
+    const dispatch=useAppDispatch();
+    const activeView = useAppSelector(state=>state.grid)
 
-  const handleViewChange = (view: ViewOption) => {
-    setActiveView(view);
-    onViewChange(view);
-  };
+    const handleViewChange=()=>{
+        dispatch(toogleGrid())
+    }
   return (
     <div>
       
@@ -22,7 +20,7 @@ const GridOption: FC<ToggleViewProps> = () => {
         className={`w-8 h-[32px] rounded-l-lg flex justify-center items-center  ${
           activeView === "single" ? "bg-[#3D4466]" : "bg-[#0C1231]"
         }`}
-        onClick={() => handleViewChange("single")}
+        onClick={() => handleViewChange()}
       >
         <svg
           width="9"
@@ -38,7 +36,7 @@ const GridOption: FC<ToggleViewProps> = () => {
         className={`w-8 h-[32px]  rounded-r-lg flex justify-center items-center ${
           activeView === "double" ? "bg-[#3D4466]" : "bg-[#0C1231]"
         }`}
-        onClick={() => handleViewChange("double")}
+        onClick={() => handleViewChange()}
       >
         <svg
           width="14"
