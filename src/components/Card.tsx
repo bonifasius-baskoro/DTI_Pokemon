@@ -3,13 +3,14 @@ import usepokemonChosen from "../hooks/usePokemonDetailV2";
 
 interface CardProps {
   name: string;
+  health:number;
 }
 
-const Card: FC<CardProps> = ({ name }) => {
+const Card: FC<CardProps> = ({ name}) => {
   const { pokemonChosen } = usepokemonChosen(name);
 
   useEffect(() => {
-    console.log(JSON.stringify(pokemonChosen));
+    // console.log(JSON.stringify(pokemonChosen));
   });
   return (
     <div className=" font-DM mx-2 w-min-[128px] w-max-[280px] h-min-[180px] h-max-[240px] bg-[#F0F3FF] rounded-md">
@@ -18,6 +19,7 @@ const Card: FC<CardProps> = ({ name }) => {
           {pokemonChosen?.type}
         </h1>
         <h1>#{pokemonChosen?.id}</h1>
+        <h1 className="text-red-400">{pokemonChosen?.health}</h1>
       </div>
       <div className="flex justify-center">
         <img

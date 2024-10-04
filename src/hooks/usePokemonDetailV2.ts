@@ -19,4 +19,6 @@ const usePokemonDetailList = (name:string) => {
   return {  pokemonChosen, loading, error };
 };
 
+
+
 export default usePokemonDetailList;

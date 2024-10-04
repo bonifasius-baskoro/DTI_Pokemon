@@ -50,7 +50,7 @@ const pokemonListSlice= createSlice({
             state.loading=false;
             state.error=false;
             state.data=action.payload ;
-            console.log(JSON.stringify(state.data))
+
             localStorage.setItem("pokemonListCache",JSON.stringify(state))
         })
         .addCase(fetchPokemonListData.rejected,(state)=>{
