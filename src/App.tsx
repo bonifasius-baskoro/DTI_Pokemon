@@ -6,6 +6,7 @@ import {
 // import usePokemonList from './hooks/usePokemonList'
 // import usePokemonDetails from './hooks/usePokemonDetail'
 import HomePage from "./Pages/HomePage"
+import PokeDetailPage from './Pages/PokeDetailPage';
 
 function App() {
   // Use the custom hook to fetch pokemon list
@@ -22,6 +23,7 @@ function App() {
       <>
       <Routes>
         <Route path="/" element={<HomePage/>} />
+        <Route path="/detail/:name"  element={<PokeDetailPage/>}/>
       </Routes>
       </>
    
