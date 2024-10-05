@@ -4,7 +4,6 @@ import usePokemonDetailList from "../hooks/usePokemonDetailV2";
 
 interface CardProps {
   name: string;
-  health:number;
 }
 
 const Card: FC<CardProps> = ({ name}) => {

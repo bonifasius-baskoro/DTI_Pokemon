@@ -21,7 +21,7 @@ const usePokemonList = () => {
   );
 
   const searchedArray = useAppSelector(state=>{
-    listPokemonFilter(state,searchString)
+    listPokemonFilter(state,{searchString: searchString})
   })
 
 
@@ -35,13 +35,19 @@ const usePokemonList = () => {
   
   }, [sortedArray])
 
+  useEffect(() => {
+    console.log("Searched array updated:");
+    console.log("in use" , searchString)
+  
+  }, [searchedArray])
+
    const  updateSortField = (newSortField: 'name' | 'hp') => {
     setSortField(newSortField);
   };
 
   const updateSearchField = (stringSearch:string)=>{
     setSearchString(stringSearch);
-    console.log(JSON.stringify(searchedArray))
+    console.log(JSON.stringify(searchedArray) , stringSearch)
   };
 
   return { sortedArray,searchedArray ,loading, error ,updateSortField,updateSearchField};

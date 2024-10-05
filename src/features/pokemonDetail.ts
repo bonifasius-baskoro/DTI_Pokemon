@@ -117,18 +117,17 @@ export const listPokemonDetailSorted = createSelector(
     })
   }
 );
-const pokemonSearchProps = (_state:RootState, props :{searchString:string})=>{
+const pokemonSearchProps = (_state:RootState, props :{searchString:string})=>
   props.searchString;
-}
+
 export const listPokemonFilter = createSelector(
   [pokemonData, pokemonSearchProps],(pokemonArray: pokemonNameDetail[], searchString:string)=>{
-    if (!searchString) return pokemonArray; // Return all if no search string
-
-    return pokemonArray.filter((pokemon) => 
+    if (searchString=="") return pokemonArray; // Return all if no search string
+    console.log("This running")
+    return [...pokemonArray].filter((pokemon) => 
       pokemon.name.toLowerCase().includes(searchString.toLowerCase())
     );
   } );
-
 
 
 
